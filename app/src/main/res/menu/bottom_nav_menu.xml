@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_home_24"
+        />
+    <item android:title="Diễn đàn"
+        android:id="@+id/forum"
+        android:icon="@drawable/ic_baseline_forum_24"
+        />
+    <item android:title="Download"
+        android:id="@+id/download"
+        android:icon="@drawable/ic_baseline_download_24"
+        />
+    <item android:title="Cài đặt"
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_baseline_settings_24"
+        />
+    <item android:title="Profile"
+        android:id="@+id/profile"
+android:icon="@drawable/ic_baseline_person_24"
+     />
+</menu>
