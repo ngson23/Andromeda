@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
 //      getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
