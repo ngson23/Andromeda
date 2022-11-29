@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 import vn.edu.poly.andromeda.R;
+import vn.edu.poly.andromeda.activities.DetailsActivity;
 import vn.edu.poly.andromeda.model.FearturedModel;
 
 public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyViewHolder> {
@@ -44,20 +45,20 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent sendDataToDetailsActivity = new Intent(holder.itemView.getContext(), DetailsActivity.class);
-//                sendDataToDetailsActivity.putExtra("title",dataModels.get(position).getFtitle());
-//                sendDataToDetailsActivity.putExtra("link",dataModels.get(position).getFlink());
-//                sendDataToDetailsActivity.putExtra("cover",dataModels.get(position).getFcover());
-//                sendDataToDetailsActivity.putExtra("thumb",dataModels.get(position).getFthumb());
-//                sendDataToDetailsActivity.putExtra("desc",dataModels.get(position).getFdes());
-//                sendDataToDetailsActivity.putExtra("cast",dataModels.get(position).getFcast());
-//                sendDataToDetailsActivity.putExtra("t_link",dataModels.get(position).getFtlink());
-//
-//                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
-//                        .makeSceneTransitionAnimation((Activity)holder.itemView.getContext(),holder.imageView,
-//                                "imageMain");
+                Intent sendDataToDetailsActivity = new Intent(holder.itemView.getContext(), DetailsActivity.class);
+                sendDataToDetailsActivity.putExtra("title",dataModels.get(position).getFtitle());
+                sendDataToDetailsActivity.putExtra("link",dataModels.get(position).getFlink());
+                sendDataToDetailsActivity.putExtra("cover",dataModels.get(position).getFcover());
+                sendDataToDetailsActivity.putExtra("thumb",dataModels.get(position).getFthumb());
+                sendDataToDetailsActivity.putExtra("desc",dataModels.get(position).getFdes());
+                sendDataToDetailsActivity.putExtra("cast",dataModels.get(position).getFcast());
+                sendDataToDetailsActivity.putExtra("t_link",dataModels.get(position).getFtlink());
 
-//                holder.itemView.getContext().startActivity(sendDataToDetailsActivity,optionsCompat.toBundle());
+                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation((Activity)holder.itemView.getContext(),holder.imageView,
+                                "imageMain");
+
+                holder.itemView.getContext().startActivity(sendDataToDetailsActivity,optionsCompat.toBundle());
 
             }
         });

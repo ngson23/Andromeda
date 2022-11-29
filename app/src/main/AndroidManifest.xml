@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Andromeda"
         tools:targetApi="31">
         <activity
+            android:name=".DetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PlayActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
