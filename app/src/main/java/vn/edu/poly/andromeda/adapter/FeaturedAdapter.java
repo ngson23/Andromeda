@@ -45,7 +45,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent sendDataToDetailsActivity = new Intent(holder.itemView.getContext(), DetailsActivity.class);
+                Intent sendDataToDetailsActivity = new Intent(holder.itemView.getContext(),DetailsActivity.class);
                 sendDataToDetailsActivity.putExtra("title",dataModels.get(position).getFtitle());
                 sendDataToDetailsActivity.putExtra("link",dataModels.get(position).getFlink());
                 sendDataToDetailsActivity.putExtra("cover",dataModels.get(position).getFcover());
