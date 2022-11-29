@@ -1,33 +1,29 @@
 {
   "project_info": {
-<<<<<<< HEAD
     "project_number": "3235270210",
     "project_id": "testlogin-41807",
-    "storage_bucket": "testlogin-41807.appspot.com"
-=======
+    "storage_bucket": "testlogin-41807.appspot.com",
     "project_number": "9904524969",
     "firebase_url": "https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "fir-movies-by-toan",
     "storage_bucket": "fir-movies-by-toan.appspot.com"
->>>>>>> origin/master
   },
   "client": [
     {
       "client_info": {
-<<<<<<< HEAD
         "mobilesdk_app_id": "1:3235270210:android:f30ca24b54976b3f82a7db",
         "android_client_info": {
           "package_name": "com.example.andromeda"
-=======
+        },
         "mobilesdk_app_id": "1:9904524969:android:ca1b727afa223a5b8a23b8",
         "android_client_info": {
           "package_name": "com.example.demo_movies"
->>>>>>> origin/master
         }
       },
       "oauth_client": [
         {
-<<<<<<< HEAD
+          "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
+          "client_type": 3,
           "client_id": "3235270210-47hjrru46gu2cb0d3iu78go6tph2qiqg.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -37,30 +33,22 @@
         },
         {
           "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
-=======
-          "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
->>>>>>> origin/master
           "client_type": 3
         }
       ],
       "api_key": [
         {
-<<<<<<< HEAD
+          "current_key": "AIzaSyA69mdgaGWm8j_qSCk73iLyfkqJLfYGJhU",
           "current_key": "AIzaSyB3T3lKIHVhncZv7kI6IZj3cqhZqHGaN1k"
-=======
-          "current_key": "AIzaSyA69mdgaGWm8j_qSCk73iLyfkqJLfYGJhU"
->>>>>>> origin/master
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-<<<<<<< HEAD
-              "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
-=======
               "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
->>>>>>> origin/master
+              "client_type": 3,
+              "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -69,7 +57,10 @@
     },
     {
       "client_info": {
-<<<<<<< HEAD
+        "mobilesdk_app_id": "1:9904524969:android:18bfd9f6046cfc608a23b8",
+        "android_client_info": {
+          "package_name": "vn.edu.poly.andromeda"
+        },
         "mobilesdk_app_id": "1:3235270210:android:4787fc032c9eab0b82a7db",
         "android_client_info": {
           "package_name": "com.example.testlogingoogle"
@@ -77,6 +68,8 @@
       },
       "oauth_client": [
         {
+          "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
+          "client_type": 3,
           "client_id": "3235270210-aigb8i250knp4s19jhjjg2a1m5anglpm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -91,6 +84,7 @@
       ],
       "api_key": [
         {
+          "current_key": "AIzaSyA69mdgaGWm8j_qSCk73iLyfkqJLfYGJhU",
           "current_key": "AIzaSyB3T3lKIHVhncZv7kI6IZj3cqhZqHGaN1k"
         }
       ],
@@ -98,6 +92,8 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
+              "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
+              "client_type": 3,
               "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
               "client_type": 3
             }
@@ -108,16 +104,12 @@
     {
       "client_info": {
         "mobilesdk_app_id": "1:3235270210:android:1754a4d61905661d82a7db",
-=======
-        "mobilesdk_app_id": "1:9904524969:android:18bfd9f6046cfc608a23b8",
->>>>>>> origin/master
         "android_client_info": {
           "package_name": "vn.edu.poly.andromeda"
         }
       },
       "oauth_client": [
         {
-<<<<<<< HEAD
           "client_id": "3235270210-4p2ht0jis0tko271emc8vmf8clou12oe.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -127,26 +119,18 @@
         },
         {
           "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
-=======
-          "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
->>>>>>> origin/master
           "client_type": 3
         }
       ],
       "api_key": [
         {
-<<<<<<< HEAD
           "current_key": "AIzaSyB3T3lKIHVhncZv7kI6IZj3cqhZqHGaN1k"
-=======
-          "current_key": "AIzaSyA69mdgaGWm8j_qSCk73iLyfkqJLfYGJhU"
->>>>>>> origin/master
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-<<<<<<< HEAD
               "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
               "client_type": 3
             }
@@ -185,9 +169,6 @@
           "other_platform_oauth_client": [
             {
               "client_id": "3235270210-90t4tth4mb592khn7eljigkahcon5b9j.apps.googleusercontent.com",
-=======
-              "client_id": "9904524969-7svh7blrcacqchks64hne3bhl6srbtap.apps.googleusercontent.com",
->>>>>>> origin/master
               "client_type": 3
             }
           ]
