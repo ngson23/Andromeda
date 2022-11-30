@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        String toan="test";
+        String toan = "updated";
+
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.forum:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,forumFragment).commit();
-                        getSupportActionBar().setTitle("Bình loạn");
+                        getSupportActionBar().setTitle("Bình luận");
                         return true;
                     case R.id.download:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,downloadFragment).commit();
