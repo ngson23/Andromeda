@@ -1,6 +1,7 @@
 package vn.edu.poly.andromeda;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,10 +28,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+
+
+
 
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
-//      getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
@@ -41,16 +46,22 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.home:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
+                        getSupportActionBar().setTitle("Andromeda");
                         return true;
                     case R.id.forum:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,forumFragment).commit();
+                        getSupportActionBar().setTitle("Bình loạn");
                         return true;
                     case R.id.download:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,downloadFragment).commit();
+                        getSupportActionBar().setTitle("Tải xuống");
+                        return true;
                     case R.id.setting:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
-                    case R.id.profile:
+                            getSupportActionBar().setTitle("Setting");return true;
+                        case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
+                            getSupportActionBar().setTitle("Profile");
                         return true;
                 }
 

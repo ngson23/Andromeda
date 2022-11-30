@@ -2,6 +2,7 @@ package vn.edu.poly.andromeda.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,9 +24,10 @@ import vn.edu.poly.andromeda.model.FearturedModel;
 
 public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyViewHolder> {
     private List<FearturedModel> dataModels;
+    private Context mContext;
 
-    public FeaturedAdapter(List<FearturedModel> dataModels) {
-
+    public FeaturedAdapter(List<FearturedModel> dataModels, Context context) {
+        mContext = context;
         this.dataModels = dataModels;
     }
 
@@ -59,6 +61,7 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
                                 "imageMain");
 
                 holder.itemView.getContext().startActivity(sendDataToDetailsActivity,optionsCompat.toBundle());
+
 
             }
         });
