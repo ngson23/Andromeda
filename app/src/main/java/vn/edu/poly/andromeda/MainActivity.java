@@ -2,13 +2,8 @@ package vn.edu.poly.andromeda;
 
 
 import android.content.Intent;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
-
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
