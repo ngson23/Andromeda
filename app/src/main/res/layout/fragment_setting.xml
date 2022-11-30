@@ -3,10 +3,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_700"
+  style="@style/SCREN"
     >
 
     <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/idchinhsangtoi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/ch_nh_s_ng_t_i"
+                android:layout_weight="1"
+                />
+            <Switch
+                android:id="@+id/switcher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1
+"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/ngonngu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ng_n_ng"/>
+
+
+        <RadioGroup
+            android:id="@+id/language"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/tienganh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/englist"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/tiengviet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ti_ng_vi_t"
+                android:layout_weight="1"/>
+        </RadioGroup>
+        <TextView
+            android:id="@+id/huongdan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/h_ng_d_n_s_d_ng"/>
+    </LinearLayout>
 
 
 </FrameLayout>

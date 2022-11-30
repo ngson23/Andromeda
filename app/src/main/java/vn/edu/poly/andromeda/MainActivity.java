@@ -3,6 +3,8 @@ package vn.edu.poly.andromeda;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,12 +19,13 @@ import vn.edu.poly.andromeda.fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
-
+    Checknetwork checknetwork = new Checknetwork();
     HomeFragment homeFragment = new HomeFragment();
     SettingFragment settingsFragment = new SettingFragment();
     ForumFragment forumFragment = new ForumFragment();
     ProfileFragment profileFragment = new ProfileFragment();
     DownloadFragment downloadFragment = new DownloadFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,19 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
+    }
 
+    @Override
+    protected void onStart() {
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(checknetwork, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(checknetwork);
+        super.onStop();
     }
 }
