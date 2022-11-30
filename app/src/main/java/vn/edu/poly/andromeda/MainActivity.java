@@ -47,13 +47,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-
         // Hiện Thị Logo
         ab.setDisplayUseLogoEnabled(true);
         ab.setTitle("Andromeda");
 
-
-        String toan = "updated";
 
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
@@ -98,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_actionbar,menu);
+        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         return super.onCreateOptionsMenu(menu);
 
-        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
     }
 
     @Override
