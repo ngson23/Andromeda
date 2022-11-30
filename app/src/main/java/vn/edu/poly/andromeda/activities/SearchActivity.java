@@ -24,7 +24,7 @@ public class SearchActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
 
-
+        String test = "";
     }
 
 
