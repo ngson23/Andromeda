@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-
-
-
+        String toan="test";
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
 
@@ -58,10 +56,11 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.setting:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
-                            getSupportActionBar().setTitle("Setting");return true;
-                        case R.id.profile:
+                        getSupportActionBar().setTitle("Setting");
+                        return true;
+                    case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
-                            getSupportActionBar().setTitle("Profile");
+                        getSupportActionBar().setTitle("Profile");
                         return true;
                 }
 
