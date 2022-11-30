@@ -63,7 +63,7 @@ public class NotLoginFragment extends Fragment {
                 FragmentManager manager = getFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.container,loginedFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .setTransition(FragmentTransaction.TRANSIT_NONE)
                         .commit();
             }
         } catch (ApiException e) {

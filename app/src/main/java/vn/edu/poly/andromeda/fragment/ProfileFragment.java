@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
-import vn.edu.poly.andromeda.MainActivity;
 import vn.edu.poly.andromeda.R;
 
 public class ProfileFragment extends Fragment {
@@ -32,14 +31,14 @@ public class ProfileFragment extends Fragment {
             FragmentManager manager = getFragmentManager();
             manager.beginTransaction()
                     .replace(R.id.layout_profile,loginedFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setTransition(FragmentTransaction.TRANSIT_NONE)
                     .commit();
         }else{
             NotLoginFragment notLoginFragment = new NotLoginFragment();
             FragmentManager manager = getFragmentManager();
             manager.beginTransaction()
                     .replace(R.id.layout_profile,notLoginFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setTransition(FragmentTransaction.TRANSIT_NONE)
                     .commit();
         }
 

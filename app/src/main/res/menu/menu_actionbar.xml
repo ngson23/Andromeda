@@ -6,8 +6,7 @@
         android:icon="@drawable/ic_search"
         android:title="Tìm Kiếm"
         app:showAsAction="ifRoom"
-        app:iconifiedByDefault="false"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+        />
 
     <item
         android:id="@+id/icon_notìication"
