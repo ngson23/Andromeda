@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
         featuredRecyclerView.setLayoutManager(layoutManager);
 
         fearturedModels = new ArrayList<>();
-        featuredAdapter = new FeaturedAdapter(fearturedModels);
+        featuredAdapter = new FeaturedAdapter(fearturedModels,getContext());
         featuredRecyclerView.setAdapter(featuredAdapter);
 
         Fref.child("featured").addValueEventListener(new ValueEventListener() {
