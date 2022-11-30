@@ -1,19 +1,31 @@
 package vn.edu.poly.andromeda;
 
+
+import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import vn.edu.poly.andromeda.activities.SearchActivity;
 import vn.edu.poly.andromeda.fragment.DownloadFragment;
 import vn.edu.poly.andromeda.fragment.ForumFragment;
 import vn.edu.poly.andromeda.fragment.HomeFragment;
+import vn.edu.poly.andromeda.fragment.NotificationFragment;
 import vn.edu.poly.andromeda.fragment.ProfileFragment;
 import vn.edu.poly.andromeda.fragment.SettingFragment;
 
@@ -25,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ForumFragment forumFragment = new ForumFragment();
     ProfileFragment profileFragment = new ProfileFragment();
     DownloadFragment downloadFragment = new DownloadFragment();
+    NotificationFragment notificationFragment = new NotificationFragment();
 
 
     @Override
@@ -33,11 +46,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+
+        // Hiện Thị Logo
+        ab.setDisplayUseLogoEnabled(true);
+        ab.setTitle("Andromeda");
+
 
         String toan = "updated";
 
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
+//      getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
@@ -71,6 +91,15 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+    }
+
+    // Action Bar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_actionbar,menu);
+        return super.onCreateOptionsMenu(menu);
+
         bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
     }
 
@@ -85,5 +114,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(checknetwork);
         super.onStop();
+
     }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.icon_search:
+                setTitle("Tìm Kiếm");
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+                return true;
+            case R.id.icon_notìication:
+                setTitle("Thông Báo");
+                getSupportFragmentManager().beginTransaction().replace(R.id.container,notificationFragment).commit();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    //
+
 }

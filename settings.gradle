@@ -14,7 +14,9 @@ dependencyResolutionManagement {
         mavenCentral()
         jcenter()
         maven {url 'https://jitpack.io'}
+        maven{url'https://maven.google.com'}
     }
 }
+
 rootProject.name = "Andromeda"
 include ':app'

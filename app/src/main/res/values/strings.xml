@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Andromeda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="ch_nh_s_ng_t_i">chỉnh sáng tối</string>
     <string name="ng_n_ng">ngôn ngữ</string>
     <string name="englist">Tiếng Anh</string>
@@ -10,4 +14,5 @@
     <string name="t_p">tập</string>
     <string name="phim_desc">Phim Desc</string>
     <string name="di_n_vi_n">Diễn viên</string>
+
 </resources>
