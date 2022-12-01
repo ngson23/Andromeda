@@ -27,6 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.PlayActivity"
+            android:screenOrientation="landscape"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
