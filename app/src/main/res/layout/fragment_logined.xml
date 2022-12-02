@@ -47,23 +47,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Lịch Sử Xem"
-            android:textColor="@color/white"
-            android:id="@+id/txtLichSuXem"
-            android:gravity=""
-            />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
