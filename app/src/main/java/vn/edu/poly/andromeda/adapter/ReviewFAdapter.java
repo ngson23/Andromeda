@@ -68,6 +68,7 @@ public class ReviewFAdapter extends RecyclerView.Adapter<ReviewFAdapter.MyViewHo
         return dataModels.size();
     }
 
+
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageView;
         private TextView textView;

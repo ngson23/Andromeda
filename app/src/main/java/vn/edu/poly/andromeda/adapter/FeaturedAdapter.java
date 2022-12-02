@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.poly.andromeda.R;
@@ -29,6 +30,11 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
     public FeaturedAdapter(List<FearturedModel> dataModels, Context context) {
         mContext = context;
         this.dataModels = dataModels;
+    }
+
+    public void setFilteredList(ArrayList<FearturedModel> listFearture) {
+        this.dataModels = listFearture;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -72,6 +78,8 @@ public class FeaturedAdapter extends RecyclerView.Adapter<FeaturedAdapter.MyView
     public int getItemCount() {
         return dataModels.size();
     }
+
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageView;
