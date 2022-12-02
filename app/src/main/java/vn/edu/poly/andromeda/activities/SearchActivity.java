@@ -2,6 +2,8 @@ package vn.edu.poly.andromeda.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -21,17 +23,14 @@ import java.util.ArrayList;
 
 import vn.edu.poly.andromeda.R;
 import vn.edu.poly.andromeda.adapter.FeaturedAdapter;
-import vn.edu.poly.andromeda.adapter.ReviewFAdapter;
 import vn.edu.poly.andromeda.model.FearturedModel;
-import vn.edu.poly.andromeda.model.ReviewFModel;
 
 public class SearchActivity extends AppCompatActivity {
     SearchView searchView;
     RecyclerView recyclerViewSearch;
     FeaturedAdapter featuredAdapter;
     ArrayList<FearturedModel> listFearture;
-    ArrayList<ReviewFModel> listReview;
-    ReviewFAdapter reviewFAdapter ;
+    TextView tv_noFind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +38,9 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         searchView = findViewById(R.id.search_view);
         recyclerViewSearch = findViewById(R.id.rcv_search);
+        tv_noFind = findViewById(R.id.tv_noFind);
+
+        tv_noFind.setVisibility(View.INVISIBLE);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
@@ -50,12 +52,15 @@ public class SearchActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                listFearture.clear();
                 getListDataSearch(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                listFearture.clear();
+                getListDataSearch(newText);
                 return false;
             }
         });
@@ -75,15 +80,17 @@ public class SearchActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app");
         DatabaseReference myRef = database.getReference("featured");
 
+
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     FearturedModel dfearturedModel = dataSnapshot.getValue(FearturedModel.class);
                     if(dfearturedModel.getFtitle().toLowerCase().contains(text.toLowerCase())){
+                        tv_noFind.setVisibility(View.INVISIBLE);
                         listFearture.add(dfearturedModel);
                     }else{
-                        listFearture.clear();
+                        tv_noFind.setVisibility(View.VISIBLE);
                     }
                 }
                 featuredAdapter.setFilteredList(listFearture);
