@@ -1,11 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-  style="@style/SCREN"
+    style="@style/SCREN"
     >
 
-    <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_forum"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linear_text" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/linear_text"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/forum_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="User name"
+                android:textColor="#F4D924"
+                android:textSize="24dp"
+                />
+
+            <EditText
+                android:id="@+id/forum_comment"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Comment"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"
+                android:background="@drawable/edit_text"
+                />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/forum_send"
+            android:layout_width="20dp"
+            android:layout_weight="1"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/send"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:backgroundTint="@android:color/transparent"
+            android:layout_height="60dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

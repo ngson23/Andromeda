@@ -84,14 +84,18 @@ public class SearchActivity extends AppCompatActivity {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count = 0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     FearturedModel dfearturedModel = dataSnapshot.getValue(FearturedModel.class);
                     if(dfearturedModel.getFtitle().toLowerCase().contains(text.toLowerCase())){
-                        tv_noFind.setVisibility(View.INVISIBLE);
                         listFearture.add(dfearturedModel);
-                    }else{
-                        tv_noFind.setVisibility(View.VISIBLE);
+                        count = 1;
                     }
+                }
+                if (count != 0 ){
+                    tv_noFind.setVisibility(View.INVISIBLE);
+                }else{
+                    tv_noFind.setVisibility(View.VISIBLE);
                 }
                 featuredAdapter.setFilteredList(listFearture);
             }
