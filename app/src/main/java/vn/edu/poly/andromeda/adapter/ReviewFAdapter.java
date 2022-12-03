@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import vn.edu.poly.andromeda.R;
@@ -26,6 +27,11 @@ public class ReviewFAdapter extends RecyclerView.Adapter<ReviewFAdapter.MyViewHo
 
     public ReviewFAdapter(List<ReviewFModel> dataModels) {
         this.dataModels = dataModels;
+    }
+
+    public void setFilteredList(ArrayList<ReviewFModel> listFearture) {
+        this.dataModels = listFearture;
+        notifyDataSetChanged();
     }
 
     @NonNull

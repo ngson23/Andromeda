@@ -10,7 +10,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.ConcatAdapter;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,7 +24,9 @@ import java.util.ArrayList;
 
 import vn.edu.poly.andromeda.R;
 import vn.edu.poly.andromeda.adapter.FeaturedAdapter;
+import vn.edu.poly.andromeda.adapter.ReviewFAdapter;
 import vn.edu.poly.andromeda.model.FearturedModel;
+import vn.edu.poly.andromeda.model.ReviewFModel;
 
 public class SearchActivity extends AppCompatActivity {
     SearchView searchView;
@@ -31,6 +34,8 @@ public class SearchActivity extends AppCompatActivity {
     FeaturedAdapter featuredAdapter;
     ArrayList<FearturedModel> listFearture;
     TextView tv_noFind;
+    ArrayList<ReviewFModel> listReview;
+    ReviewFAdapter reviewFAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +47,24 @@ public class SearchActivity extends AppCompatActivity {
 
         tv_noFind.setVisibility(View.INVISIBLE);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        recyclerViewSearch.setLayoutManager(layoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        gridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+        recyclerViewSearch.setLayoutManager(gridLayoutManager);
+
         listFearture =  new ArrayList<>();
         featuredAdapter = new FeaturedAdapter(listFearture,this);
-        recyclerViewSearch.setAdapter(featuredAdapter);
+
+
+        listReview = new ArrayList<>();
+        reviewFAdapter = new ReviewFAdapter(listReview);
+
+        ConcatAdapter  concatAdapter = new ConcatAdapter(featuredAdapter,reviewFAdapter);
+        recyclerViewSearch.setAdapter(concatAdapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                listReview.clear();
                 listFearture.clear();
                 getListDataSearch(query);
                 return false;
@@ -59,6 +72,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                listReview.clear();
                 listFearture.clear();
                 getListDataSearch(newText);
                 return false;
@@ -78,21 +92,18 @@ public class SearchActivity extends AppCompatActivity {
 
     public void getListDataSearch(String text){
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app");
+
         DatabaseReference myRef = database.getReference("featured");
-
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int count = 0;
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     FearturedModel dfearturedModel = dataSnapshot.getValue(FearturedModel.class);
                     if(dfearturedModel.getFtitle().toLowerCase().contains(text.toLowerCase())){
                         listFearture.add(dfearturedModel);
-                        count = 1;
                     }
                 }
-                if (count != 0 ){
+                if(validate() > 0){
                     tv_noFind.setVisibility(View.INVISIBLE);
                 }else{
                     tv_noFind.setVisibility(View.VISIBLE);
@@ -106,11 +117,40 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+
+        DatabaseReference reviewRef = database.getReference("review");
+        reviewRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    ReviewFModel dfearturedModel = dataSnapshot.getValue(ReviewFModel.class);
+                    if(dfearturedModel.getRtitle().toLowerCase().contains(text.toLowerCase())){
+                        listReview.add(dfearturedModel);
+                    }
+                }
+                if(validate() > 0){
+                    tv_noFind.setVisibility(View.INVISIBLE);
+                }else{
+                    tv_noFind.setVisibility(View.VISIBLE);
+                }
+                reviewFAdapter.setFilteredList(listReview);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
-
-
+    public int validate(){
+        int check = -1;
+        if(listReview.size() > 0 || listFearture.size() > 0){
+            check = 1;
+        }
+        return check;
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
