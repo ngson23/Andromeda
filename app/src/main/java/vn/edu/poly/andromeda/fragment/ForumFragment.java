@@ -1,5 +1,6 @@
 package vn.edu.poly.andromeda.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -59,7 +60,11 @@ public class ForumFragment extends Fragment {
         edtComment =view.findViewById(R.id.forum_comment);
         send = view.findViewById(R.id.forum_send);
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
-        tvUser.setText(account.getGivenName());
+        try {
+            tvUser.setText(account.getGivenName());
+        }catch (Exception e){
+            Toast.makeText(getContext(), "Bạn cần đăng nhập để có thể bình luận", Toast.LENGTH_SHORT).show();
+        }
 
         loadData(view);
 
@@ -68,8 +73,11 @@ public class ForumFragment extends Fragment {
             public void onClick(View view1) {
                 if (edtComment.getText().toString().equals("")){
                     return;
-                }else {
-                writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"");
+                }if(tvUser.getText().toString().equals("")){
+                    Toast.makeText(getContext(), "Bạn cần đăng nhập để thực hiện chức năng này", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId());
                 loadData(view);
                 edtComment.setText("");
                 }
@@ -78,8 +86,8 @@ public class ForumFragment extends Fragment {
     }
 
 
-    public void writeNewUser(String username, String comment, String url) {
-        CommentModel commentModel = new CommentModel(username,comment,url);
+    public void writeNewUser(String username, String comment, String url, String id) {
+        CommentModel commentModel = new CommentModel(username,comment,url,id);
         myRef.push().setValue(commentModel);
     }
 

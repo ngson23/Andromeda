@@ -5,6 +5,7 @@ public class CommentModel {
     String Comment;
     String Url;
     String Child;
+    String Id;
     public CommentModel() {
     }
 
@@ -14,11 +15,19 @@ public class CommentModel {
         Url = url;
     }
 
-    public CommentModel(String username, String comment, String url, String child) {
+    public CommentModel(String username, String comment, String url, String id) {
         Username = username;
         Comment = comment;
         Url = url;
-        Child = child;
+        Id = id;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 
     public String getChild() {

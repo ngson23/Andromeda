@@ -1,5 +1,8 @@
 package vn.edu.poly.andromeda.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import java.util.List;
 
@@ -21,7 +27,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
 
     public CommentAdapter(List<CommentModel> commentModels) {
         this.commentModels = commentModels;
+
     }
+
 
     @NonNull
     @Override
@@ -37,6 +45,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         if (!commentModels.get(position).getUrl().equals("null")){
             Glide.with(holder.itemView).load(commentModels.get(position).getUrl()).into(holder.comment_image);
         }
+//        if (commentModels.get(position).getId().equals(account.getId())){
+//            Log.d("zzzzz", "onBindViewHolder: check"+ account.getId() );
+//        }
 
     }
 
