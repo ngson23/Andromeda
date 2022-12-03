@@ -34,7 +34,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.tvName.setText(commentModels.get(position).getUsername());
         holder.tvComment.setText(commentModels.get(position).getComment());
-        if (!commentModels.get(position).getUrl().equals("")){
+        if (!commentModels.get(position).getUrl().equals("null")){
             Glide.with(holder.itemView).load(commentModels.get(position).getUrl()).into(holder.comment_image);
         }
 
