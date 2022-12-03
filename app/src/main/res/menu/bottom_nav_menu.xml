@@ -9,9 +9,9 @@
         android:id="@+id/forum"
         android:icon="@drawable/ic_baseline_forum_24"
         />
-    <item android:title="Download"
+    <item android:title="Ưa thích"
         android:id="@+id/download"
-        android:icon="@drawable/ic_baseline_download_24"
+        android:icon="@drawable/ic_baseline_favorite_24"
         />
     <item android:title="Cài đặt"
         android:id="@+id/setting"

@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.download:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,downloadFragment).commit();
-                        getSupportActionBar().setTitle("Tải xuống");
+                        getSupportActionBar().setTitle("Ưa thích");
                         return true;
                     case R.id.setting:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
