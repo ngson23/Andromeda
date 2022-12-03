@@ -16,4 +16,10 @@
     <style name="SCREN">
         <item name="android:background">@color/black</item>
     </style>
+    <style name="TEXT">
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="TEXT_COMMENT">
+        <item name="android:textColor">#CE8A6F6F</item>
+    </style>
 </resources>

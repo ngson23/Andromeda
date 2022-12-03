@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="ch_nh_s_ng_t_i">adjust light and dark</string>
-    <string name="ng_n_ng">language</string>
+    <string name="ch_nh_s_ng_t_i">Ldjust light and dark</string>
+    <string name="ng_n_ng">Language</string>
     <string name="englist">Englist</string>
     <string name="ti_ng_vi_t">Vietnamese</string>
     <string name="h_ng_d_n_s_d_ng">User manual</string>
@@ -11,4 +11,16 @@
     <string name="t_p">Episodes</string>
     <string name="phim_desc">Movies Desc</string>
     <string name="di_n_vi_n">Casts</string>
+    <string name="b_nh_lu_n">Comment</string>
+    <string name="forrum_text">You need to login to be able to comment</string>
+    <string name="NotLoggin_Loginfailed">Login failed</string>
+    <string name="forumfrag_sendd">You need to login to perform this function</string>
+    <string name="text_search">Search</string>
+    <string name="text_dien_dan">Forum</string>
+    <string name="text_yeu_thich">Like</string>
+    <string name="text_cai_dat">Setting</string>
+    <string name="text_ho_so">Profile</string>
+    <string name="kh_ng_t_m_th_y_film">Film Not Found</string>
+    <string name="phi_n_b_n_1_0_0">Version 1.0.0</string>
+
 </resources>

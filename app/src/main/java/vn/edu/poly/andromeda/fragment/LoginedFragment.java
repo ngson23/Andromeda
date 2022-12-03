@@ -35,7 +35,9 @@ public class LoginedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_logined, container, false);
+
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+
         if(account != null) {
             imgAvata = v.findViewById(R.id.imgAvata);
             txtTenNguoiDung = v.findViewById(R.id.txtTenNguoiDung);

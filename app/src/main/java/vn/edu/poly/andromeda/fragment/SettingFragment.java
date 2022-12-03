@@ -1,6 +1,7 @@
 package vn.edu.poly.andromeda.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Locale;
 
@@ -42,6 +45,7 @@ public class SettingFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         aSwitch = view.findViewById(R.id.switcher);
 
         sharedPreferences = requireActivity().getSharedPreferences("MODE", Context.MODE_PRIVATE);
@@ -86,6 +90,12 @@ public class SettingFragment extends Fragment {
                 }
             }
         });
+        huongdan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         super.onViewCreated(view, savedInstanceState);
     }
     public void  setLocale(String language){
@@ -111,4 +121,5 @@ public class SettingFragment extends Fragment {
         huongdan.setText(R.string.h_ng_d_n_s_d_ng);
 
     }
+
 }

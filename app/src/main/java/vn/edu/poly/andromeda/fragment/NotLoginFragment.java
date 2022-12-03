@@ -67,7 +67,7 @@ public class NotLoginFragment extends Fragment {
                         .commit();
             }
         } catch (ApiException e) {
-            Toast.makeText(getActivity(), "Đăng Nhập Thất Bại.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), R.string.NotLoggin_Loginfailed, Toast.LENGTH_SHORT).show();
         }
     }
 }

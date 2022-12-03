@@ -32,6 +32,7 @@
 
             <TextView
                 android:id="@+id/textView"
+                style="@style/TEXT"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/phim_n_i_b_t"
@@ -56,9 +57,9 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_margin="16dp"
+                android:layout_margin="8dp"
                 android:textSize="16dp"
-
+                style="@style/TEXT"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/ki_m_tra_l_i"
