@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -65,9 +66,13 @@ public class ForumFragment extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view1) {
+                if (edtComment.getText().toString().equals("")){
+                    return;
+                }else {
                 writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"");
                 loadData(view);
                 edtComment.setText("");
+                }
             }
         });
     }
@@ -100,11 +105,8 @@ public class ForumFragment extends Fragment {
                     CommentModel commentModel = dataSnapshot.getValue(CommentModel.class);
                     commentModels.add(commentModel);
                 }
-
                 commentAdapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -42,6 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:hint="Comment"
+                android:textColorHint="@color/black"
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
                 android:background="@drawable/edit_text"
@@ -55,7 +56,6 @@
             android:layout_weight="1"
             android:layout_marginTop="24dp"
             android:src="@drawable/send"
-            android:clickable="true"
             android:scaleType="fitCenter"
             android:backgroundTint="@android:color/transparent"
             android:layout_height="60dp"/>
