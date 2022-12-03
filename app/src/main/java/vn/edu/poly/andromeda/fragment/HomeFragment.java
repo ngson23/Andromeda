@@ -99,6 +99,7 @@ public class HomeFragment extends Fragment {
     private void loadFeaturedData(View view) {
         DatabaseReference Fref = database.getReference();
         featuredRecyclerView = view.findViewById(R.id.recyclerView);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
 
@@ -118,7 +119,9 @@ public class HomeFragment extends Fragment {
                     FearturedModel dataModel = contentDataSnapshot.getValue(FearturedModel.class);
                     fearturedModels.add(dataModel);
                 }
+
                 featuredAdapter.notifyDataSetChanged();
+
             }
 
             @Override
