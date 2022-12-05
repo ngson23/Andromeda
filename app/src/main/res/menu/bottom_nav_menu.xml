@@ -13,7 +13,7 @@
         android:id="@+id/download"
         android:icon="@drawable/ic_baseline_favorite_24"
         />
-    <item android:title="Cài đặt"
+    <item android:title="Cài Đặt"
         android:id="@+id/setting"
         android:icon="@drawable/ic_baseline_settings_24"
         />

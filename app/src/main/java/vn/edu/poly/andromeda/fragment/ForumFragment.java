@@ -63,7 +63,7 @@ public class ForumFragment extends Fragment {
         try {
             tvUser.setText(account.getGivenName());
         }catch (Exception e){
-            Toast.makeText(getContext(), "Bạn cần đăng nhập để có thể bình luận", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.forrum_text, Toast.LENGTH_SHORT).show();
         }
 
         loadData(view);
@@ -74,7 +74,7 @@ public class ForumFragment extends Fragment {
                 if (edtComment.getText().toString().equals("")){
                     return;
                 }if(tvUser.getText().toString().equals("")){
-                    Toast.makeText(getContext(), "Bạn cần đăng nhập để thực hiện chức năng này", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.forumfrag_sendd, Toast.LENGTH_SHORT).show();
                 }
                 else {
                 writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId());

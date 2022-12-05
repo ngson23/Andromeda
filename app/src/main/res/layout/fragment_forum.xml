@@ -41,7 +41,7 @@
                 android:id="@+id/forum_comment"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:hint="Comment"
+                android:hint="@string/b_nh_lu_n"
                 android:textColorHint="#CE8A6F6F"
                 android:paddingStart="10dp"
                 android:textColor="@color/black"
