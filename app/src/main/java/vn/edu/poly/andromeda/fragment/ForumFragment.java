@@ -2,6 +2,8 @@ package vn.edu.poly.andromeda.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +28,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -50,6 +56,7 @@ public class ForumFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_forum,container,false);
+
         return view;
     }
 
@@ -59,14 +66,29 @@ public class ForumFragment extends Fragment {
         tvUser = view.findViewById(R.id.forum_user);
         edtComment =view.findViewById(R.id.forum_comment);
         send = view.findViewById(R.id.forum_send);
+        recyclerView = view.findViewById(R.id.forum_recycleView);
+        DatabaseReference CommentRef = database.getReference();
+
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
+        String id = account.getId();
         try {
             tvUser.setText(account.getGivenName());
         }catch (Exception e){
             Toast.makeText(getContext(), R.string.forrum_text, Toast.LENGTH_SHORT).show();
         }
 
-        loadData(view);
+        commentModels = new ArrayList<>();
+        commentAdapter = new CommentAdapter(commentModels,id,getContext());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        layoutManager.setSmoothScrollbarEnabled(true);
+        layoutManager.setStackFromEnd(true);
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(commentAdapter);
+
+        loadData(CommentRef,commentAdapter,commentModels,recyclerView);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,34 +99,28 @@ public class ForumFragment extends Fragment {
                     Toast.makeText(getContext(), R.string.forumfrag_sendd, Toast.LENGTH_SHORT).show();
                 }
                 else {
-                writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId());
-                loadData(view);
+                    Date currenttime = Calendar.getInstance().getTime();
+                    DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                    String strDate = dateFormat.format(currenttime);
+                    writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId(),strDate);
+                commentModels.clear();
+                loadData(CommentRef,commentAdapter,commentModels, recyclerView);
                 edtComment.setText("");
                 }
             }
         });
+
     }
 
 
-    public void writeNewUser(String username, String comment, String url, String id) {
-        CommentModel commentModel = new CommentModel(username,comment,url,id);
+    public void writeNewUser(String username, String comment, String url, String id ,String time) {
+        CommentModel commentModel = new CommentModel(username,comment,url,id,time);
         myRef.push().setValue(commentModel);
+//        myRef2.child(id2).push().setValue(commentModel);
+
     }
 
-    public void loadData(View view){
-        DatabaseReference CommentRef = database.getReference();
-        recyclerView = view.findViewById(R.id.forum_recycleView);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(RecyclerView.VERTICAL);
-
-        layoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(layoutManager);
-
-        commentModels = new ArrayList<>();
-        commentAdapter = new CommentAdapter(commentModels);
-        recyclerView.setAdapter(commentAdapter);
-
+    public void loadData(DatabaseReference CommentRef, CommentAdapter commentAdapter,  List<CommentModel> commentModels, RecyclerView recyclerView){
 
         CommentRef.child("forum").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -113,13 +129,15 @@ public class ForumFragment extends Fragment {
                     CommentModel commentModel = dataSnapshot.getValue(CommentModel.class);
                     commentModels.add(commentModel);
                 }
-                commentAdapter.notifyDataSetChanged();
+                commentAdapter.notifyItemInserted(commentModels.size());
+                recyclerView.smoothScrollToPosition(commentModels.size());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
     }
 
 

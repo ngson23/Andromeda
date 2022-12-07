@@ -18,5 +18,8 @@ public class DownloadFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_download,container,false);
         return view;
 
+        // lấy id của tài khoản đang đăng nhập
+
+
     }
 }

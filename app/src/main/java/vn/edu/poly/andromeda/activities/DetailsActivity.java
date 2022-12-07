@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -92,6 +94,29 @@ public class DetailsActivity extends AppCompatActivity {
         title.setText(title_movies);
         desc.setText(des_movies);
 
+        // ấn nút thích: truyền
+
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(DetailsActivity.this);
+//        account.getId();
+//        Log.d("bbbb", "onCreate: " + account.getId());
+
+        // title_movies = getIntent().getStringExtra("title");
+        //        des_movies = getIntent().getStringExtra("desc");
+        //        thumb_movies= getIntent().getStringExtra("thumb");
+        //        link_movies= getIntent().getStringExtra("link");
+        //        cover_movies= getIntent().getStringExtra("cover");
+        //        cast_movies= getIntent().getStringExtra("cast");
+        //        trailer_movies= getIntent().getStringExtra("t_link");
+
+        // vào cơ sở dữ liệu
+
+
+
+
+
+
+
+
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +124,7 @@ public class DetailsActivity extends AppCompatActivity {
                 DatabaseReference myRef = database.getReference();
 
                 // truy vấn đến link => trailer_movie chính là chuỗi ftlink
+
                 myRef.child("link").child(trailer_movies).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

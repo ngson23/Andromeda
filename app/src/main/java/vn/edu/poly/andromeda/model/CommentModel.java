@@ -6,6 +6,7 @@ public class CommentModel {
     String Url;
     String Child;
     String Id;
+    String Time;
     public CommentModel() {
     }
 
@@ -20,6 +21,22 @@ public class CommentModel {
         Comment = comment;
         Url = url;
         Id = id;
+    }
+
+    public CommentModel(String username, String comment, String url, String id, String time) {
+        Username = username;
+        Comment = comment;
+        Url = url;
+        Id = id;
+        Time = time;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
     }
 
     public String getId() {
