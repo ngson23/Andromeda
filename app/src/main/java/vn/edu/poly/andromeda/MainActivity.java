@@ -16,7 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import vn.edu.poly.andromeda.activities.SearchActivity;
+import vn.edu.poly.andromeda.dbhelper.activities.SearchActivity;
 import vn.edu.poly.andromeda.fragment.DownloadFragment;
 import vn.edu.poly.andromeda.fragment.ForumFragment;
 import vn.edu.poly.andromeda.fragment.HomeFragment;
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_actionbar,menu);
         bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         return super.onCreateOptionsMenu(menu);
-
+//ắedrfgthj
     }
 
 
