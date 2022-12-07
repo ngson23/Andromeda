@@ -42,6 +42,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         this.id = id;
         this.context = context;
     }
+    public CommentAdapter(List<CommentModel> commentModels){
+        this.commentModels = commentModels;
+    }
 
 
     @NonNull
