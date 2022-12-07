@@ -136,6 +136,7 @@ public class ForumFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
+
         });
 
     }
