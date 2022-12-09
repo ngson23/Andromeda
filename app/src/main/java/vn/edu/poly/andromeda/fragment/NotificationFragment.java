@@ -1,5 +1,7 @@
 package vn.edu.poly.andromeda.fragment;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +21,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import vn.edu.poly.andromeda.MainActivity;
+import vn.edu.poly.andromeda.MyAplication;
 import vn.edu.poly.andromeda.R;
 import vn.edu.poly.andromeda.adapter.NotificationFeatureAdapter;
 import vn.edu.poly.andromeda.model.FearturedModel;
@@ -57,29 +62,6 @@ public class NotificationFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app");
 
         DatabaseReference myRef = database.getReference("featured");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    FearturedModel dfearturedModel = dataSnapshot.getValue(FearturedModel.class);
-//                    listFearture.add(dfearturedModel);
-//                    int i =  listFearture.size() - 1;
-//                    int x = listFearture.lastIndexOf(dfearturedModel) +1;
-//                    listFearture.subList(i,x);
-//                }if(validate() > 0){
-//                    textView.setVisibility(View.INVISIBLE);
-//                }else{
-//                    textView.setVisibility(View.VISIBLE);
-//                }
-//                notificationFeatureAdapter.notifyItemInserted(listFearture.size());
-//                rcv_notification.smoothScrollToPosition(listFearture.size());
-//                notificationFeatureAdapter.setFilteredList(listFearture);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -87,11 +69,25 @@ public class NotificationFragment extends Fragment {
                     listFearture.add(dfearturedModel);
                     notificationFeatureAdapter.setFilteredList(listFearture);
 
-                    if(validate() > 0){
-                        textView.setVisibility(View.INVISIBLE);
-                    }else{
-                        textView.setVisibility(View.VISIBLE);
-                    }
+
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), MyAplication.CHANNEL_ID)
+                        .setContentTitle("Phim Mới")
+                        .setContentText(dfearturedModel.getFtitle())
+                        .setSmallIcon(R.drawable.logo)
+                        .setContentIntent(pendingIntent);
+
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getActivity());
+                managerCompat.notify(999,builder.build());
+
+                if(validate() > 0){
+                    textView.setVisibility(View.INVISIBLE);
+                }else{
+                    textView.setVisibility(View.VISIBLE);
+                }
+
 
             }
 
@@ -117,6 +113,7 @@ public class NotificationFragment extends Fragment {
         });
 
     }
+
     public int validate(){
         int check = -1;
         if(listFearture.size() > 0){
