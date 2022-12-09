@@ -36,7 +36,7 @@ public class NotLoginFragment extends Fragment {
                 .build();
         GoogleSignInClient googleApiClient =  GoogleSignIn.getClient(getActivity(),gso);
 
-        signInButton.setSize(SignInButton.AUTOFILL_TYPE_TOGGLE);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
