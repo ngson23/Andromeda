@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_actionbar,menu);
         bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         return super.onCreateOptionsMenu(menu);
-
+//ắedrfgthj
     }
 
 

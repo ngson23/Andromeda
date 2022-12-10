@@ -22,5 +22,17 @@
     <string name="text_ho_so">Profile</string>
     <string name="kh_ng_t_m_th_y_film">Film Not Found</string>
     <string name="phi_n_b_n_1_0_0">Version 1.0.0</string>
+    <string name="kh_ng_c_k_t_n_i_m_ng">does not have network connection</string>
+    <string name="text_huong_dan">After downloading the application, watch the movies you like, login function
+     please use google account after login you will see 2 functions are "Favorites" and "Sign Out",
+     After logging in you can also comment on the forum, the search function is used to search for the movies you want
+     want to watch, On behalf of the creators of the app, we would like to thank you for using our app</string>
+    <string name="abcasd">abcasd</string>
+    <string name="ng_nh_p_andromeda_c_nh_ng_tr_i_nghi_m_t_t_nh_t">Sign in to Andromeda for the best experience</string>
+    <string name="xem_n_i_dung_nh_ng_video_y_u_th_ch_c_a_b_n">Watch your favorite content, videos</string>
+    <string name="m_c_a_th_ch">Favorites</string>
+    <string name="ng_xu_t">Log out</string>
+    <string name="t_n_ng_i_d_ng">User name</string>
+
 
 </resources>

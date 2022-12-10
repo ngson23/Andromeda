@@ -32,7 +32,7 @@
                 android:id="@+id/forum_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="User name"
+                android:hint="@string/t_n_ng_i_d_ng"
                 android:textColor="#F4D924"
                 android:textSize="24dp"
                 />

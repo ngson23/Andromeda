@@ -13,11 +13,11 @@
         android:id="@+id/download"
         android:icon="@drawable/ic_baseline_favorite_24"
         />
-    <item android:title="Cài Đặt"
+    <item android:title="Cài đặt"
         android:id="@+id/setting"
         android:icon="@drawable/ic_baseline_settings_24"
         />
-    <item android:title="Profile"
+    <item android:title="Hồ sơ"
         android:id="@+id/profile"
 android:icon="@drawable/ic_baseline_person_24"
      />

@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/purple_500">
+    style="@style/SCREN">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/details_toolbar"
         android:background="@android:color/transparent"
         android:backgroundTint="@android:color/transparent"
         android:layout_width="match_parent"
-        app:titleTextColor="@color/white"
+        style="@style/TEXT"
         android:layout_height="?attr/actionBarSize"/>
 
     <ScrollView
@@ -71,7 +71,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
                     android:text="TextView"
-                    android:textColor="@color/white"
+                    style="@style/TEXT"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,18 +109,24 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"/>
 
-            <TextView
-                android:background="@color/color_bg_blue"
-                android:text="@string/t_p"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="24dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingStart="16dp"
+               android:paddingEnd="16dp"
+               android:paddingTop="8dp"
+               android:paddingBottom="8dp"
+               android:layout_marginTop="16dp"
+               style="@style/SCREN_TEXT"
+               android:orientation="vertical"
+           >
+               <TextView
+                   android:text="@string/t_p"
+                   android:textSize="24dp"
+                   style="@style/TEXT"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+           </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_parts"
@@ -138,25 +144,30 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:textColor="@color/white"
+                style="@style/TEXT"
                 android:text="@string/phim_desc"
                 android:textSize="16dp"
                 android:lineSpacingExtra="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <TextView
-                android:background="@color/color_bg_blue"
-                android:text="@string/di_n_vi_n"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="24dp"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:paddingStart="16dp"
+               android:paddingEnd="16dp"
+               android:paddingTop="8dp"
+               android:paddingBottom="8dp"
+               android:layout_marginTop="16dp"
+               style="@style/SCREN_TEXT"
+               android:orientation="vertical">
+               <TextView
+                   android:text="@string/di_n_vi_n"
+                   android:textSize="24dp"
+                   style="@style/TEXT"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"/>
+           </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_casts"

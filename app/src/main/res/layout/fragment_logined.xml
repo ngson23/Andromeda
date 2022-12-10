@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/black"
+  style="@style/SCREN"
     tools:context=".fragment.LoginedFragment">
 
 
@@ -15,6 +15,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:background="@mipmap/ic_launcher"
+        android:layout_gravity="center"
+
         />
 
     <TextView
@@ -22,7 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tên Người Dùng"
-        android:textColor="@color/white"
+        style="@style/TEXT"
+        android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:textSize="18dp"
@@ -30,19 +33,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="16dp"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
         android:layout_marginTop="48dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/solid"
+        android:backgroundTint="#BEBEBE"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Mục Ưa Thích"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:text="@string/m_c_a_th_ch"
             android:id="@+id/txtMucUaThich"
             android:gravity=""
-
             />
 
     </LinearLayout>
@@ -50,16 +55,19 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="20dp"
+        android:backgroundTint="#BEBEBE"
+        android:background="@drawable/solid"
+        android:orientation="vertical"
+        >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Đăng Xuất"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:text="@string/ng_xu_t"
             android:id="@+id/txtDangXuat"
             android:gravity=""
             />

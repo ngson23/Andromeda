@@ -22,4 +22,11 @@
     <style name="TEXT_COMMENT">
         <item name="android:textColor">@color/black</item>
     </style>
+    <style name="SCREN_TEXT">
+        <item name="android:background">#BEBEBE</item>
+    </style>
+    <style name="COLOR">
+        <item name="android:tint">@color/black</item>
+    </style>
+
 </resources>

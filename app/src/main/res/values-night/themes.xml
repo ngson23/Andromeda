@@ -22,4 +22,11 @@
     <style name="TEXT_COMMENT">
         <item name="android:textColor">#CE8A6F6F</item>
     </style>
+    <style name="SCREN_TEXT">
+        <item name="android:background">@color/color_bg_blue</item>
+    </style>
+    <style name="COLOR">
+        <item name="android:tint">@color/white</item>
+    </style>
+    
 </resources>

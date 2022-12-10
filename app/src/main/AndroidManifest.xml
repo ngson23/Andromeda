@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Andromeda"
         tools:targetApi="31">
+        <activity android:name=".model.Huong_dan"
+            android:exported="false"></activity>
         <activity
             android:name=".activities.SearchActivity"
             android:exported="false">
@@ -28,8 +30,8 @@
             android:exported="false" />
         <activity
             android:name=".activities.PlayActivity"
-            android:screenOrientation="landscape"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

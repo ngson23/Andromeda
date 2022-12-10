@@ -25,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Locale;
 
 import vn.edu.poly.andromeda.R;
+import vn.edu.poly.andromeda.model.Huong_dan;
 
 
 public class SettingFragment extends Fragment {
@@ -32,7 +33,7 @@ public class SettingFragment extends Fragment {
     boolean aBoolean;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    TextView chinhsangtoi,ngongu ,huongdan;
+    TextView chinhsangtoi,ngongu ,huongdan,phienban;
     RadioGroup language;
     RadioButton englist,vietnamese;
     @Nullable
@@ -73,6 +74,7 @@ public class SettingFragment extends Fragment {
         chinhsangtoi = view.findViewById(R.id.idchinhsangtoi);
         ngongu = view.findViewById(R.id.ngonngu);
         language= view.findViewById(R.id.language);
+        phienban = view.findViewById(R.id.phienban);
         englist = view.findViewById(R.id.tienganh);
         vietnamese = view.findViewById(R.id.tiengviet);
         huongdan = view.findViewById(R.id.huongdan);
@@ -93,7 +95,8 @@ public class SettingFragment extends Fragment {
         huongdan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext().getApplicationContext(),Huong_dan.class);
+                startActivity(intent);
             }
         });
         super.onViewCreated(view, savedInstanceState);
@@ -119,7 +122,7 @@ public class SettingFragment extends Fragment {
         englist.setText(R.string.englist);
         vietnamese.setText(R.string.ti_ng_vi_t);
         huongdan.setText(R.string.h_ng_d_n_s_d_ng);
-
+        phienban.setText(R.string.phi_n_b_n_1_0_0);
     }
 
 }
