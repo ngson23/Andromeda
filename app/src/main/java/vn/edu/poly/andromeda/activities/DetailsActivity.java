@@ -151,15 +151,7 @@ public class DetailsActivity extends AppCompatActivity {
                             return;
                         }
                     }
-//                    for (int i = 0; i < favoriteModels.size(); i++){
-//                        if (favoriteModels.get(i).getFavcast().equals(cast_movies)){
-//                            toggleButton_favorite.setChecked(true);
-//
-//                        }else {
-//                            toggleButton_favorite.setChecked(false);
-//
-//                        }
-//                    }
+
                 }
 
                 @Override
@@ -185,6 +177,7 @@ public class DetailsActivity extends AppCompatActivity {
                     }catch (Exception e){
                         Toast.makeText(DetailsActivity.this, R.string.h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y, Toast.LENGTH_SHORT).show();
                     }
+                    Toast.makeText(DetailsActivity.this, "Đã thêm vào Yêu thích", Toast.LENGTH_SHORT).show();
                 }else {
                     DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
                     Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
@@ -203,46 +196,11 @@ public class DetailsActivity extends AppCompatActivity {
 
                         }
                     });
+                    Toast.makeText(DetailsActivity.this, "Đã gỡ khỏi Yêu thích", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-
-
-
-
-//        toggleButton_favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                if(b){
-//                    try{
-//                        Date currenttime = Calendar.getInstance().getTime();
-//                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-//                        String strDate = dateFormat.format(currenttime);
-//                        writeNewFavorite(title_movies,des_movies,thumb_movies,link_movies,cover_movies,cast_movies,trailer_movies,account.getId(),strDate);
-//                    }catch (Exception e){
-//                        Toast.makeText(DetailsActivity.this, "Bạn phải đăng nhập để thực hện chức năng này", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }else{
-//                    DatabaseReference dbref= FirebaseDatabase.getInstance().getReference();
-//                    Query query = dbref.child("favorite").orderByChild("favtitle").equalTo(title_movies);
-//                    query.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            // remove the value at reference
-//                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-//                                snapshot.getRef().removeValue();
-//                            }
-//                        }
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
-//                }
-//            }
-//        });
 
 
         loadPart();

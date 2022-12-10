@@ -43,7 +43,6 @@ public class LoginedFragment extends Fragment {
             txtTenNguoiDung = v.findViewById(R.id.txtTenNguoiDung);
             txtDangXuat = v.findViewById(R.id.txtDangXuat);
 
-            //
 
             txtTenNguoiDung.setText(account.getGivenName());
             Picasso.with(getActivity()).load(account.getPhotoUrl()).error(R.drawable.ic_baseline_person_24).fit().into(imgAvata);
