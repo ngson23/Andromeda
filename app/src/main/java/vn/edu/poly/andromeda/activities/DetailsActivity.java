@@ -1,5 +1,7 @@
 package vn.edu.poly.andromeda.activities;
 
+import static vn.edu.poly.andromeda.R.string.text_bo_like;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -177,7 +179,7 @@ public class DetailsActivity extends AppCompatActivity {
                     }catch (Exception e){
                         Toast.makeText(DetailsActivity.this, R.string.h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y, Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(DetailsActivity.this, "Đã thêm vào Yêu thích", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, R.string.text_da_thich, Toast.LENGTH_SHORT).show();
                 }else {
                     DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
                     Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
@@ -196,7 +198,7 @@ public class DetailsActivity extends AppCompatActivity {
 
                         }
                     });
-                    Toast.makeText(DetailsActivity.this, "Đã gỡ khỏi Yêu thích", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailsActivity.this, text_bo_like, Toast.LENGTH_SHORT).show();
                 }
             }
         });
