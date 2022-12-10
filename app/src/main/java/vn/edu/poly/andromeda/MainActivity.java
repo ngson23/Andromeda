@@ -48,12 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
-
-
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
-
+        tvTitle.setText("Andromeda");
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
