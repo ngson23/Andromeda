@@ -5,19 +5,19 @@
         android:id="@+id/home"
         android:icon="@drawable/ic_baseline_home_24"
         />
-    <item android:title="Forum"
+    <item android:title="Diễn đàn"
         android:id="@+id/forum"
         android:icon="@drawable/ic_baseline_forum_24"
         />
-    <item android:title="Like"
+    <item android:title="Ưa thích"
         android:id="@+id/download"
         android:icon="@drawable/ic_baseline_favorite_24"
         />
-    <item android:title="Setting"
+    <item android:title="Cài đặt"
         android:id="@+id/setting"
         android:icon="@drawable/ic_baseline_settings_24"
         />
-    <item android:title="Profile"
+    <item android:title="Hồ sơ"
         android:id="@+id/profile"
 android:icon="@drawable/ic_baseline_person_24"
      />

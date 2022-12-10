@@ -176,29 +176,35 @@ public class DetailsActivity extends AppCompatActivity {
                         String strDate = dateFormat.format(currenttime);
                         writeNewFavorite(title_movies,des_movies,thumb_movies,link_movies,cover_movies,cast_movies,trailer_movies,strDate,account.getId());
                         toggleButton_favorite.setChecked(true);
+                        Toast.makeText(DetailsActivity.this, R.string.text_da_thich, Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(DetailsActivity.this, R.string.h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y, Toast.LENGTH_SHORT).show();
+                        toggleButton_favorite.setChecked(false);
+                    }
+
+                }else {
+                    try {
+                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
+                        Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
+
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                    snapshot.getRef().removeValue();
+                                    toggleButton_favorite.setChecked(false);
+                                }
+
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        Toast.makeText(DetailsActivity.this, R.string.text_bo_like, Toast.LENGTH_SHORT).show();
                     }catch (Exception e){
                         Toast.makeText(DetailsActivity.this, R.string.h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y, Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(DetailsActivity.this, R.string.text_da_thich, Toast.LENGTH_SHORT).show();
-                }else {
-                    DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
-                    Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
-
-                    query.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                                snapshot.getRef().removeValue();
-                                toggleButton_favorite.setChecked(false);
-                            }
-
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                    Toast.makeText(DetailsActivity.this, text_bo_like, Toast.LENGTH_SHORT).show();
                 }
             }
         });

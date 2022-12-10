@@ -6,10 +6,10 @@
     android:id="@+id/fav_card"
     android:layout_marginBottom="20dp"
     app:cardCornerRadius="8dp"
-    >
+    android:background="@color/purple_500">
 
     <LinearLayout
-        android:background="@color/black"
+        android:background="@color/purple_500"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -39,7 +39,6 @@
                 android:id="@+id/fav_des"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:text="name"
                 android:textSize="16dp"
                 android:textColor="@color/white"/>

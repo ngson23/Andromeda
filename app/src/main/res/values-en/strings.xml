@@ -22,7 +22,7 @@
     <string name="text_ho_so">Profile</string>
     <string name="kh_ng_t_m_th_y_film">Film Not Found</string>
     <string name="phi_n_b_n_1_0_0">Version 1.0.0</string>
-    <string name="kh_ng_c_k_t_n_i_m_ng">Does not have network connection</string>
+    <string name="kh_ng_c_k_t_n_i_m_ng">does not have network connection</string>
     <string name="text_huong_dan">After downloading the application, watch the movies you like, login function
      please use google account after login you will see 2 functions are "Favorites" and "Sign Out",
      After logging in you can also comment on the forum, the search function is used to search for the movies you want
@@ -37,6 +37,5 @@
     <string name="text_detai">You must be logged in to perform this function</string>
     <string name="text_da_thich">Added to Favorites</string>
     <string name="text_bo_like">Removed from Favorites</string>
-
 
 </resources>
