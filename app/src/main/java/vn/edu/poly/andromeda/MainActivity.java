@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         // Hiện Thị Logo
+        ab.setLogo(R.mipmap.ic_launcher_round);
         ab.setDisplayUseLogoEnabled(true);
         ab.setTitle("Andromeda");
 
