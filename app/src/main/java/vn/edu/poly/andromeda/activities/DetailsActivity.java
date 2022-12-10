@@ -12,9 +12,12 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,15 +25,22 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import vn.edu.poly.andromeda.R;
 import vn.edu.poly.andromeda.adapter.CastAdapter;
 import vn.edu.poly.andromeda.adapter.PartAdapter;
 import vn.edu.poly.andromeda.model.CastModel;
+import vn.edu.poly.andromeda.model.CommentModel;
+import vn.edu.poly.andromeda.model.FavoriteModel;
 import vn.edu.poly.andromeda.model.PartModel;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -44,6 +54,7 @@ public class DetailsActivity extends AppCompatActivity {
     private ImageView thumb,cover;
     private TextView title,desc;
     private FloatingActionButton actionButton;
+    private ToggleButton toggleButton_favorite;
     private String title_movies;
     private String des_movies;
     private String thumb_movies;
@@ -51,6 +62,7 @@ public class DetailsActivity extends AppCompatActivity {
     private String cover_movies;
     private String cast_movies;
     private String trailer_movies;
+
 
 
     @Override
@@ -64,8 +76,10 @@ public class DetailsActivity extends AppCompatActivity {
         title = findViewById(R.id.title_details);
         desc = findViewById(R.id.tv_desc);
         actionButton = findViewById(R.id.floatingActionButton2);
+        toggleButton_favorite = findViewById(R.id.toggle_button);
         part_recycle_view = findViewById(R.id.recyclerView_parts);
         cast_recycle_view = findViewById(R.id.recyclerView_casts);
+
 
 
         title_movies = getIntent().getStringExtra("title");
@@ -75,6 +89,7 @@ public class DetailsActivity extends AppCompatActivity {
         cover_movies= getIntent().getStringExtra("cover");
         cast_movies= getIntent().getStringExtra("cast");
         trailer_movies= getIntent().getStringExtra("t_link");
+
 
         Toolbar toolbar = findViewById(R.id.details_toolbar);
         setSupportActionBar(toolbar);
@@ -92,37 +107,13 @@ public class DetailsActivity extends AppCompatActivity {
         title.setText(title_movies);
         desc.setText(des_movies);
 
-        // ấn nút thích: truyền
-
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(DetailsActivity.this);
-//        account.getId();
-//        Log.d("bbbb", "onCreate: " + account.getId());
-
-        // title_movies = getIntent().getStringExtra("title");
-        //        des_movies = getIntent().getStringExtra("desc");
-        //        thumb_movies= getIntent().getStringExtra("thumb");
-        //        link_movies= getIntent().getStringExtra("link");
-        //        cover_movies= getIntent().getStringExtra("cover");
-        //        cast_movies= getIntent().getStringExtra("cast");
-        //        trailer_movies= getIntent().getStringExtra("t_link");
-
-        // vào cơ sở dữ liệu
-
-
-
-
-
-
-
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(DetailsActivity.this);
 
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase database = FirebaseDatabase.getInstance("https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app");
                 DatabaseReference myRef = database.getReference();
-
-                // truy vấn đến link => trailer_movie chính là chuỗi ftlink
-
                 myRef.child("link").child(trailer_movies).addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -141,8 +132,128 @@ public class DetailsActivity extends AppCompatActivity {
             }
         });
 
+
+
+        List<FavoriteModel> favoriteModels = new ArrayList<>();
+        try{
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("favorite");
+            myRef.child(account.getId()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot content:snapshot.getChildren()){
+                        FavoriteModel favoriteModel = content.getValue(FavoriteModel.class);
+                        favoriteModels.add(favoriteModel);
+                        if (favoriteModel.getFavcast().equals(cast_movies)){
+                            toggleButton_favorite.setChecked(true);
+                            return;
+                        }
+                    }
+//                    for (int i = 0; i < favoriteModels.size(); i++){
+//                        if (favoriteModels.get(i).getFavcast().equals(cast_movies)){
+//                            toggleButton_favorite.setChecked(true);
+//
+//                        }else {
+//                            toggleButton_favorite.setChecked(false);
+//
+//                        }
+//                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }catch (Exception e){
+
+        }
+
+        toggleButton_favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(toggleButton_favorite.isChecked()){
+                    Log.d("bbbbb", "onClick: else");
+                    try{
+                        Date currenttime = Calendar.getInstance().getTime();
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+                        String strDate = dateFormat.format(currenttime);
+                        writeNewFavorite(title_movies,des_movies,thumb_movies,link_movies,cover_movies,cast_movies,trailer_movies,strDate,account.getId());
+                        toggleButton_favorite.setChecked(true);
+                    }catch (Exception e){
+                        Toast.makeText(DetailsActivity.this, "Bạn phải đăng nhập để thực hện chức năng này", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
+                    Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
+
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                snapshot.getRef().removeValue();
+                                toggleButton_favorite.setChecked(false);
+                            }
+
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+        });
+
+
+
+
+
+//        toggleButton_favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b){
+//                    try{
+//                        Date currenttime = Calendar.getInstance().getTime();
+//                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+//                        String strDate = dateFormat.format(currenttime);
+//                        writeNewFavorite(title_movies,des_movies,thumb_movies,link_movies,cover_movies,cast_movies,trailer_movies,account.getId(),strDate);
+//                    }catch (Exception e){
+//                        Toast.makeText(DetailsActivity.this, "Bạn phải đăng nhập để thực hện chức năng này", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }else{
+//                    DatabaseReference dbref= FirebaseDatabase.getInstance().getReference();
+//                    Query query = dbref.child("favorite").orderByChild("favtitle").equalTo(title_movies);
+//                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            // remove the value at reference
+//                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+//                                snapshot.getRef().removeValue();
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//                }
+//            }
+//        });
+
+
         loadPart();
         loadCast();
+    }
+
+
+    private void writeNewFavorite(String title, String des, String thumb, String link, String cover, String cast, String trailer, String strDate, String id){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("favorite");
+        FavoriteModel favoriteModel = new FavoriteModel(cast,cover,des,link,thumb,title,trailer,strDate);
+        Log.d("bbbbb", "writeNewFavorite: time" + favoriteModel.getFavtime() );
+        myRef.child(id).push().setValue(favoriteModel);
     }
 
     private void loadCast() {

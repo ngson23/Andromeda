@@ -107,7 +107,7 @@ public class ForumFragment extends Fragment {
                     Date currenttime = Calendar.getInstance().getTime();
                     DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                     String strDate = dateFormat.format(currenttime);
-                    writeNewUser(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId(),strDate);
+                    writeNewComment(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId(),strDate);
                 commentModels.clear();
                 loadData(CommentRef,commentAdapter,commentModels, recyclerView);
                 edtComment.setText("");
@@ -118,7 +118,7 @@ public class ForumFragment extends Fragment {
     }
 
 
-    public void writeNewUser(String username, String comment, String url, String id ,String time) {
+    public void writeNewComment(String username, String comment, String url, String id ,String time) {
         CommentModel commentModel = new CommentModel(username,comment,url,id,time);
         myRef.push().setValue(commentModel);
 //        myRef2.child(id2).push().setValue(commentModel);
