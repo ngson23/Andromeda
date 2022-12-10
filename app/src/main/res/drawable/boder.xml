@@ -8,6 +8,7 @@
         android:right="6dp"
         android:bottom="6dp" />
     <corners android:radius="10dp" />
-    <stroke android:width="2dp" android:color="#000" />
+    <stroke android:width="2dp" android:color="#BEBEBE" />
+
 
 </shape>

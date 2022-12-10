@@ -10,7 +10,7 @@
     <string name="ti_ng_vi_t">Tiếng Việt</string>
     <string name="h_ng_d_n_s_d_ng">Hướng dẫn sử dụng</string>
     <string name="phim_n_i_b_t">Phim nổi bật</string>
-    <string name="ki_m_tra_l_i">Kiểm tra lại</string>
+    <string name="ki_m_tra_l_i">Tóm tắt phim</string>
     <string name="t_p">Tập</string>
     <string name="phim_desc">Phim Desc</string>
     <string name="di_n_vi_n">Diễn viên</string>
@@ -25,6 +25,17 @@
     <string name="text_ho_so">Hồ sơ</string>
     <string name="kh_ng_t_m_th_y_film">Không Tìm Thấy Film.</string>
     <string name="phi_n_b_n_1_0_0">Phiên Bản 1.0.0</string>
+    <string name="kh_ng_c_k_t_n_i_m_ng">không có kết nối mạng</string>
+    <string name="text_huong_dan">Sau khi tải ứng dụng hãy xem những bộ phim mà mình thích, chức năng đăng nhập
+    hãy dùng tài khoản google sau khi đăng nhập bạn sẽ thấy 2 chức năng là "Mục ưa thích" và "Đăng xuất",
+    sau khi đăng nhập bạn còn có thể bình luận trên diễn đàn, chức năng tìm kiếm dùng để tìm kiếm các bộ phim mà bạn
+    muốn xem, thay mặt những người tạo lên app xin trân thành cảm ơn các bạn vì đã dùng app của chúng tôi</string>
+    <string name="abcasd">abcasd</string>
+    <string name="ng_nh_p_andromeda_c_nh_ng_tr_i_nghi_m_t_t_nh_t">Đăng nhập Andromeda để có những trải nghiệm tốt nhất.</string>
+    <string name="xem_n_i_dung_nh_ng_video_y_u_th_ch_c_a_b_n">Xem nội dung, những video yêu thích của bạn.</string>
+    <string name="m_c_a_th_ch">Mục Ưa Thích</string>
+    <string name="ng_xu_t">Đăng Xuất</string>
+    <string name="t_n_ng_i_d_ng">Tên người dùng</string>
 
 
 </resources>

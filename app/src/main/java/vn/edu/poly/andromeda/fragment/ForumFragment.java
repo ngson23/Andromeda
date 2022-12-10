@@ -101,6 +101,7 @@ public class ForumFragment extends Fragment {
                     return;
                 }if(tvUser.getText().toString().equals("")){
                     Toast.makeText(getContext(), R.string.forumfrag_sendd, Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     Date currenttime = Calendar.getInstance().getTime();
