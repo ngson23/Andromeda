@@ -63,8 +63,8 @@ public class HomeFragment extends Fragment {
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_RIGHT);
-        sliderView.setScrollTimeInSec(6);
         sliderView.setAutoCycle(true);
+        sliderView.setScrollTimeInSec(3);
 
         loadFireBaseForSlider();
         loadFeaturedData(view);
@@ -136,8 +136,8 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
 
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
+//        layoutManager.setReverseLayout(true);
+//        layoutManager.setStackFromEnd(true);
 
         reviewFRecyclerView.setLayoutManager(layoutManager);
 
