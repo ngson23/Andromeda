@@ -70,15 +70,19 @@ public class ForumFragment extends Fragment {
         DatabaseReference CommentRef = database.getReference();
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getActivity());
-        String id = account.getId();
+        String id;
+
+        commentModels = new ArrayList<>();
+
         try {
             tvUser.setText(account.getGivenName());
+            id = account.getId();
+            commentAdapter = new CommentAdapter(commentModels,id,getContext());
         }catch (Exception e){
+            commentAdapter = new CommentAdapter(commentModels);
             Toast.makeText(getContext(), R.string.forrum_text, Toast.LENGTH_SHORT).show();
         }
 
-        commentModels = new ArrayList<>();
-        commentAdapter = new CommentAdapter(commentModels,id,getContext());
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.VERTICAL);
