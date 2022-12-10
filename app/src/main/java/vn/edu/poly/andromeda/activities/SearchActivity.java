@@ -59,6 +59,7 @@ public class SearchActivity extends AppCompatActivity {
         reviewFAdapter = new ReviewFAdapter(listReview);
 
         ConcatAdapter  concatAdapter = new ConcatAdapter(featuredAdapter,reviewFAdapter);
+
         recyclerViewSearch.setAdapter(concatAdapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -72,9 +73,9 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                listReview.clear();
-                listFearture.clear();
-                getListDataSearch(newText);
+//                listReview.clear();
+//                listFearture.clear();
+//                getListDataSearch(newText);
                 return false;
             }
         });
