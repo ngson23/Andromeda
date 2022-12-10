@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,9 +30,7 @@ import vn.edu.poly.andromeda.R;
 
 public class LoginedFragment extends Fragment {
     ImageView imgAvata;
-    TextView txtTenNguoiDung, txtDangXuat;
-
-
+    TextView txtTenNguoiDung, txtDangXuat,txtYeuthich;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

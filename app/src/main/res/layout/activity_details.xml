@@ -121,6 +121,7 @@
                android:orientation="vertical"
            >
                <TextView
+                   android:id="@+id/txtEspisodes"
                    android:text="@string/t_p"
                    android:textSize="24dp"
                    style="@style/TEXT"
