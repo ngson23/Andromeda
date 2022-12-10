@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -40,18 +41,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
-
+        TextView tvTitle = findViewById(R.id.tv_toolbar_title);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        // Hiện Thị Logo
-        ab.setLogo(R.mipmap.ic_launcher_round);
-        ab.setDisplayUseLogoEnabled(true);
-        ab.setTitle("Andromeda");
+        ab.setTitle("");
+
 
 
         bottomNavigationView  = findViewById(R.id.bottom_navigation);
 
-//      getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
 
@@ -62,23 +61,23 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.home:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,homeFragment).commit();
-                        getSupportActionBar().setTitle("Andromeda");
+                        tvTitle.setText("Andromeda");
                         return true;
                     case R.id.forum:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,forumFragment).commit();
-                        getSupportActionBar().setTitle(R.string.text_dien_dan);
+                        tvTitle.setText("Diễn đàn");
                         return true;
                     case R.id.download:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,downloadFragment).commit();
-                        getSupportActionBar().setTitle(R.string.text_yeu_thich);
+                        tvTitle.setText("Yêu thích");
                         return true;
                     case R.id.setting:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
-                        getSupportActionBar().setTitle(R.string.text_cai_dat);
+                        tvTitle.setText("Cài đặt");
                         return true;
                     case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
-                        getSupportActionBar().setTitle(R.string.text_ho_so);
+                        tvTitle.setText("Thông tin");
                         return true;
                 }
 
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_actionbar,menu);
         bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
         return super.onCreateOptionsMenu(menu);
-//ắedrfgthj
+
     }
 
 

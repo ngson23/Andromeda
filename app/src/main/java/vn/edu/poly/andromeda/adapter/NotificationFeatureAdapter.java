@@ -48,7 +48,7 @@ public class NotificationFeatureAdapter extends  RecyclerView.Adapter<Notificati
     @Override
     public void onBindViewHolder(@NonNull NotificationFeatureAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tv_tilte_movie.setText(dataModels.get(position).getFtitle());
-        holder.tv_type_movie.setText("Featured Movies");
+
         holder.tv_dsc.setText(dataModels.get(position).getFdes());
         Glide.with(holder.itemView.getContext()).load(dataModels.get(position).getFcover()).into(holder.notification_image);
 
@@ -95,7 +95,6 @@ public class NotificationFeatureAdapter extends  RecyclerView.Adapter<Notificati
             super(itemView);
             notification_image = itemView.findViewById(R.id.notification_image);
             tv_tilte_movie = itemView.findViewById(R.id.tv_tilte_movie);
-            tv_type_movie = itemView.findViewById(R.id.tv_type_movie);
             tv_dsc = itemView.findViewById(R.id.tv_dsc);
             img_trangthai = itemView.findViewById(R.id.img_trangthai);
 

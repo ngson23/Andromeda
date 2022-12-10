@@ -6,6 +6,7 @@
     style="@style/SCREN_TEXT"
     android:clickable="true"
     android:focusable="true"
+    android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:layout_height="wrap_content"

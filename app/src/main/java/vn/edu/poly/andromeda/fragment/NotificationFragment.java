@@ -71,7 +71,8 @@ public class NotificationFragment extends Fragment {
 
 
                 Intent intent = new Intent(getActivity(), MainActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+//                PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0,intent,PendingIntent.FLAG_CANCEL_CURRENT);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0,intent,PendingIntent.FLAG_IMMUTABLE);
 
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), MyAplication.CHANNEL_ID)
                         .setContentTitle("Phim Mới")

@@ -97,7 +97,7 @@ public class ForumFragment extends Fragment {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view1) {
-                if (edtComment.getText().toString().equals("")){
+                if (edtComment.getText().toString().trim().equals("")){
                     return;
                 }if(tvUser.getText().toString().equals("")){
                     Toast.makeText(getContext(), R.string.forumfrag_sendd, Toast.LENGTH_SHORT).show();
@@ -107,7 +107,7 @@ public class ForumFragment extends Fragment {
                     Date currenttime = Calendar.getInstance().getTime();
                     DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
                     String strDate = dateFormat.format(currenttime);
-                    writeNewComment(account.getGivenName(),edtComment.getText().toString(),account.getPhotoUrl()+"",account.getId(),strDate);
+                    writeNewComment(account.getGivenName(),edtComment.getText().toString().trim(),account.getPhotoUrl()+"",account.getId(),strDate);
                 commentModels.clear();
                 loadData(CommentRef,commentAdapter,commentModels, recyclerView);
                 edtComment.setText("");
