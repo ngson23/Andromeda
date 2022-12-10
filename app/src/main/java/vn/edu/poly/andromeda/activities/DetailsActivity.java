@@ -81,7 +81,7 @@ public class DetailsActivity extends AppCompatActivity {
         toggleButton_favorite = findViewById(R.id.toggle_button);
         part_recycle_view = findViewById(R.id.recyclerView_parts);
         cast_recycle_view = findViewById(R.id.recyclerView_casts);
-        TextView tvEsp = findViewById(R.id.txtEspisodes);
+
 
 
         title_movies = getIntent().getStringExtra("title");
@@ -151,6 +151,15 @@ public class DetailsActivity extends AppCompatActivity {
                             return;
                         }
                     }
+//                    for (int i = 0; i < favoriteModels.size(); i++){
+//                        if (favoriteModels.get(i).getFavcast().equals(cast_movies)){
+//                            toggleButton_favorite.setChecked(true);
+//
+//                        }else {
+//                            toggleButton_favorite.setChecked(false);
+//
+//                        }
+//                    }
                 }
 
                 @Override
@@ -173,40 +182,70 @@ public class DetailsActivity extends AppCompatActivity {
                         String strDate = dateFormat.format(currenttime);
                         writeNewFavorite(title_movies,des_movies,thumb_movies,link_movies,cover_movies,cast_movies,trailer_movies,strDate,account.getId());
                         toggleButton_favorite.setChecked(true);
-                        Toast.makeText(DetailsActivity.this, "Đã thêm vào Yêu thích", Toast.LENGTH_SHORT).show();
                     }catch (Exception e){
-                        toggleButton_favorite.setChecked(false);
-                        Toast.makeText(DetailsActivity.this, "Bạn phải đăng nhập để thực hiện chức năng này", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetailsActivity.this, R.string.h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y, Toast.LENGTH_SHORT).show();
                     }
                 }else {
-                    try {
-                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
-                        Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
+                    DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
+                    Query query = dbref.child("favorite").child(account.getId()).orderByChild("favcast").equalTo(cast_movies);
 
-                        query.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                                    snapshot.getRef().removeValue();
-                                    toggleButton_favorite.setChecked(false);
-                                }
-
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                snapshot.getRef().removeValue();
+                                toggleButton_favorite.setChecked(false);
                             }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                            }
-                        });
-                        Toast.makeText(DetailsActivity.this, "Đã xoá khỏi Yêu thích", Toast.LENGTH_SHORT).show();
-                    }catch (Exception e){
-                        Toast.makeText(DetailsActivity.this, "Bạn phải đăng nhập để sử dụng chức năng này", Toast.LENGTH_SHORT).show();
-                    }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                        }
+                    });
                 }
             }
         });
 
-        loadPart(tvEsp);
+
+
+
+
+//        toggleButton_favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if(b){
+//                    try{
+//                        Date currenttime = Calendar.getInstance().getTime();
+//                        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+//                        String strDate = dateFormat.format(currenttime);
+//                        writeNewFavorite(title_movies,des_movies,thumb_movies,link_movies,cover_movies,cast_movies,trailer_movies,account.getId(),strDate);
+//                    }catch (Exception e){
+//                        Toast.makeText(DetailsActivity.this, "Bạn phải đăng nhập để thực hện chức năng này", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }else{
+//                    DatabaseReference dbref= FirebaseDatabase.getInstance().getReference();
+//                    Query query = dbref.child("favorite").orderByChild("favtitle").equalTo(title_movies);
+//                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                            // remove the value at reference
+//                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+//                                snapshot.getRef().removeValue();
+//                            }
+//                        }
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
+//                }
+//            }
+//        });
+
+
+        loadPart();
         loadCast();
     }
 
@@ -251,7 +290,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void loadPart(TextView tvEsp) {
+    private void loadPart() {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app");
         DatabaseReference partRef = database.getReference();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -270,9 +309,6 @@ public class DetailsActivity extends AppCompatActivity {
                     PartModel partModel = content.getValue(PartModel.class);
                     partModels.add(partModel);
                 }
-                if(partModels.size()==0){
-                    tvEsp.setText("Mô tả");
-                }
                 partAdapter.notifyDataSetChanged();
             }
 
@@ -281,8 +317,6 @@ public class DetailsActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

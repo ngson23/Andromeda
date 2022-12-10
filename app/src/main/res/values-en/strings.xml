@@ -3,7 +3,7 @@
 
     <string name="ch_nh_s_ng_t_i">Ldjust light and dark</string>
     <string name="ng_n_ng">Language</string>
-    <string name="englist">Englist</string>
+    <string name="englist">English</string>
     <string name="ti_ng_vi_t">Vietnamese</string>
     <string name="h_ng_d_n_s_d_ng">User manual</string>
     <string name="phim_n_i_b_t">Featured Movies</string>
@@ -33,6 +33,8 @@
     <string name="m_c_a_th_ch">Favorites</string>
     <string name="ng_xu_t">Log out</string>
     <string name="t_n_ng_i_d_ng">User name</string>
+    <string name="h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y">Please login to use this function</string>
+    <string name="text_detai">You must be logged in to perform this function</string>
 
 
 </resources>
