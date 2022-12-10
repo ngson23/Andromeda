@@ -36,6 +36,8 @@
     <string name="m_c_a_th_ch">Mục Ưa Thích</string>
     <string name="ng_xu_t">Đăng Xuất</string>
     <string name="t_n_ng_i_d_ng">Tên người dùng</string>
+    <string name="h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y">Hãy đăng nhập để sử dụng chức năng này</string>
+    <string name="text_detai">Bạn phải đăng nhập để thực hện chức năng này</string>
 
 
 </resources>

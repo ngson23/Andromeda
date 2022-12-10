@@ -65,19 +65,19 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     case R.id.forum:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,forumFragment).commit();
-                        tvTitle.setText("Diễn đàn");
+                        tvTitle.setText(R.string.text_dien_dan);
                         return true;
                     case R.id.download:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,downloadFragment).commit();
-                        tvTitle.setText("Yêu thích");
+                        tvTitle.setText(R.string.text_yeu_thich);
                         return true;
                     case R.id.setting:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,settingsFragment).commit();
-                        tvTitle.setText("Cài đặt");
+                        tvTitle.setText(R.string.text_cai_dat);
                         return true;
                     case R.id.profile:
                         getSupportFragmentManager().beginTransaction().replace(R.id.container,profileFragment).commit();
-                        tvTitle.setText("Thông tin");
+                        tvTitle.setText(R.string.text_ho_so);
                         return true;
                 }
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/purple_500"
+
     style="@style/SCREN"
     >
 
@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Hãy đăng nhập để sử dụng chức năng này"
-        android:textColor="@color/white"
+        android:text="@string/h_y_ng_nh_p_s_d_ng_ch_c_n_ng_n_y"
+        style="@style/TEXT"
         android:textSize="24dp" />
 
 </FrameLayout>
