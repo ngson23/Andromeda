@@ -109,6 +109,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
                 // remove the value at reference
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     snapshot.getRef().removeValue();
+
                     notifyItemRemoved(position);
                     commentModels.remove(position);
                     notifyItemRangeChanged(position,getItemCount());
