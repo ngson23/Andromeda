@@ -22,7 +22,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chưa Có Film Mới."
+        android:text="@string/ch_a_c_film_m_i"
         android:textSize="20dp"
         android:id="@+id/tv_newMovie"
         android:gravity="center"
