@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,7 +65,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         final String time = commentModels.get(position).getTime();
 //        Log.d("zzzzz", "onBindViewHolder: "+ time);
 
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
@@ -132,13 +133,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         ImageView comment_image;
         TextView tvName,tvComment;
         CardView cardView;
+        FrameLayout layout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             comment_image = itemView.findViewById(R.id.comment_img);
             tvName = itemView.findViewById(R.id.comment_tvname);
             tvComment = itemView.findViewById(R.id.comment_tvcomment);
-            cardView = itemView.findViewById(R.id.cardview_comment);
+            layout = itemView.findViewById(R.id.cardview_comment);
         }
     }
 
