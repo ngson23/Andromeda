@@ -66,7 +66,7 @@ public class DetailsActivity extends AppCompatActivity {
     private String cover_movies;
     private String cast_movies;
     private String trailer_movies;
-
+    private TextView tvDes;
 
 
     @Override
@@ -83,7 +83,7 @@ public class DetailsActivity extends AppCompatActivity {
         toggleButton_favorite = findViewById(R.id.toggle_button);
         part_recycle_view = findViewById(R.id.recyclerView_parts);
         cast_recycle_view = findViewById(R.id.recyclerView_casts);
-
+        tvDes = findViewById(R.id.txtEspisodes);
 
 
         title_movies = getIntent().getStringExtra("title");
@@ -211,7 +211,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
 
-        loadPart();
+        loadPart(tvDes);
         loadCast();
     }
 
@@ -256,7 +256,7 @@ public class DetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void loadPart() {
+    private void loadPart(TextView tvDes) {
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://fir-movies-by-toan-default-rtdb.asia-southeast1.firebasedatabase.app");
         DatabaseReference partRef = database.getReference();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -274,6 +274,9 @@ public class DetailsActivity extends AppCompatActivity {
                 for (DataSnapshot content:snapshot.getChildren()){
                     PartModel partModel = content.getValue(PartModel.class);
                     partModels.add(partModel);
+                }
+                if (partModels.size()==0){
+                    tvDes.setText("Mô tả");
                 }
                 partAdapter.notifyDataSetChanged();
             }
