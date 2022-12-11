@@ -69,7 +69,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
             @Override
             public boolean onLongClick(View view) {
 
-                if (commentModels.get(position).getId().equals(id)){
+                if (commentModels.get(position).getId().equals(id)|| id.equals("113163396900500690565")){
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Xoá bình luận");
