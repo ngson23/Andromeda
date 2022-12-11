@@ -72,16 +72,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
                 if (commentModels.get(position).getId().equals(id)|| id.equals("113163396900500690565")){
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Xoá bình luận");
-                    builder.setMessage("Bạn có chắc chắn xoá bình luận này?");
+                    builder.setTitle(R.string.text_xoa_binh_luan);
+                    builder.setMessage(R.string.text_chac_chan);
 
-                    builder.setNegativeButton("Xoá", new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(R.string.text_xoa, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             delete(position,time);
                         }
                     });
-                    builder.setPositiveButton("Huỷ", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(R.string.text_huy, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
 

@@ -3,10 +3,15 @@ package vn.edu.poly.andromeda;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +22,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Locale;
+
 import vn.edu.poly.andromeda.activities.SearchActivity;
 import vn.edu.poly.andromeda.fragment.DownloadFragment;
 import vn.edu.poly.andromeda.fragment.ForumFragment;
@@ -24,6 +31,7 @@ import vn.edu.poly.andromeda.fragment.HomeFragment;
 import vn.edu.poly.andromeda.fragment.NotificationFragment;
 import vn.edu.poly.andromeda.fragment.ProfileFragment;
 import vn.edu.poly.andromeda.fragment.SettingFragment;
+
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -34,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     ProfileFragment profileFragment = new ProfileFragment();
     DownloadFragment downloadFragment = new DownloadFragment();
     NotificationFragment notificationFragment = new NotificationFragment();
+    RadioGroup language;
 
 
     @Override
@@ -83,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     // Action Bar
@@ -124,5 +132,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     //
-
 }
